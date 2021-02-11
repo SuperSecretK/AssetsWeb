@@ -9,9 +9,7 @@ export default class TransferHistory extends Component {
 
   showDeposits() {
     return this.props.depositList.map((deposit, index) => (
-      
       <tr key={index}>
-        {console.log(deposit.date.toLocaleString())}
         <td>{index}</td>
         <td>{deposit.amount}</td>
         <td>{deposit.desc}</td>
@@ -20,11 +18,26 @@ export default class TransferHistory extends Component {
     ));
   }
 
+  showWithdraw() {
+    return this.props.withdrawList.map((withdraw, index) => (
+      <tr key={index}>
+        <td>{index}</td>
+        <td>{withdraw.amount}</td>
+        <td>{withdraw.desc}</td>
+        <td>{withdraw.date.toLocaleString()}</td>
+      </tr>
+    ));
+  }
+
   render() {
     return (
-      <div>
+      <div className="row">
+        <div className="col-6">
         <Table striped bordered hover>
           <thead>
+            <tr>
+              <th>Deposit</th>
+            </tr>
             <tr>
               <th>#</th>
               <th>Amount</th>
@@ -36,6 +49,25 @@ export default class TransferHistory extends Component {
           {this.showDeposits()}
           </tbody>
         </Table>
+        </div>
+        <div className="col-6">
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Withdraw</th>
+            </tr>
+            <tr>
+              <th>#</th>
+              <th>Amount</th>
+              <th>Description</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+          {this.showWithdraw()}
+          </tbody>
+        </Table>
+        </div>
       </div>
     );
   }
