@@ -57,8 +57,8 @@ export default function withAuth(ComponentToProtect) {
       }
       return (
         <div>
-        <ComponentToProtect {...this.props} />;
-        {this.authState()}
+        <ComponentToProtect {...this.props} />
+        {/* {this.authState()} */}
         </div>
       );
     }

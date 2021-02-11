@@ -34,7 +34,7 @@ class Login extends Component {
     }, {headers: this.headers})
     .then(res => {
       if (res.status === 200) {
-        this.props.history.push('/');
+        this.props.history.push('/profile');
       } else {
         const error = new Error(res.error);
         throw error;
@@ -65,7 +65,7 @@ class Login extends Component {
               <Form.Control type="text" onChange={this.onChangeUsername} value={this.state.username}/>
             </Form.Group>
             <Form.Group>
-              <Form.Label>Passcode</Form.Label>
+              <Form.Label>Password</Form.Label>
               <Form.Control type="password" onChange={this.onChangePassword} value={this.state.password}/>
             </Form.Group>
             <Button className="login-btn" block style={{backgroundColor: "#f36523"}} type="submit" id="button">
