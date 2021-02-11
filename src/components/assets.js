@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-// import { Button, Form, Card } from "react-bootstrap";
-import axios from 'axios';
+import { Table } from "react-bootstrap";
 
 export default class Assets extends Component {
   constructor(props) {
@@ -8,17 +7,42 @@ export default class Assets extends Component {
     this.state = {};
   }
 
-  componentDidMount() {
-    axios.get()
-    .then(res => {
-      this.setState({msg: res.data.text});
-    })
-    .catch(err => console.log(err));
+  showAssets() {
+    return this.props.list.map((asset, index) => (
+      <tr key={index}>
+        <td>{asset.symbol}</td>
+        <td>{asset.vol}</td>
+        <td>{asset.price}</td>
+        <td>{asset.capital}</td>
+        <td>{}</td>
+        <td>{}</td>
+        <td>{}</td>
+        <td>{}</td>
+      </tr>
+    ));
   }
 
   render() {
     return (
-      <div></div>
+      <div>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Symbol</th>
+              <th>Volume</th>
+              <th>Capital single</th>
+              <th>Captical avg</th>
+              <th>Market single</th>
+              <th>Market avg</th>
+              <th>Profit/Loss</th>
+              <th>Profit/Loss %</th>
+            </tr>
+          </thead>
+          <tbody>
+          {this.showAssets()}
+          </tbody>
+        </Table>
+      </div>
     );
   }
 }
