@@ -9,7 +9,6 @@ export default class Assets extends Component {
 
   showAssets() {
     const market = this.props.market;
-    console.log(market);
     return this.props.list.map((asset, index) => {
       const marketPrice = market[`${asset.symbol}`]
       const pl = ((marketPrice - asset.price) / asset.price) * 100;
