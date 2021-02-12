@@ -4,6 +4,9 @@ import axios from 'axios';
 import Assets from "./assets";
 import TradeHistory from "./tradeHistory";
 import TransferHistory from "./transferHistory";
+import TradeInput from "./tradeInput";
+import TransferInput from "./transferInput";
+import InputForm from "./Form";
 
 export default class Index extends Component {
   constructor(props) {
@@ -40,6 +43,9 @@ export default class Index extends Component {
   }
 
   setKey(key) {
+    if (key === 'submit') {
+      
+    }
     this.setState({key: key});
   }
 
@@ -68,7 +74,44 @@ export default class Index extends Component {
               withdrawList={this.state.withdrawHistory}
             />
           </Tab>
+          <Tab eventKey="submit" title="Submit">
+            <InputForm
+              options={{
+                path: 'api/assets',
+                query: '',
+                dropdownQuery: 'buy',
+                time: true,
+                label: false,
+                placeholder: true,
+                inputs: [
+                  {name: 'trade', type: 'dropdown', selections: ['buy', 'sell']},
+                  {name: 'symbol', type: 'text'},
+                  {name: 'price', type: 'number'},
+                  {name: 'vol', type: 'number'},
+                ],
+                button: 'Submit'
+              }}
+            />
+            
+            <InputForm
+              options={{
+                path: 'api/profile',
+                query: '',
+                dropdownQuery: 'deposit',
+                time: true,
+                label: false,
+                placeholder: true,
+                inputs: [
+                  {name: 'transfer', type: 'dropdown', selections: ['deposit', 'withdraw']},
+                  {name: 'amount', type: 'number'},
+                  {name: 'desc', type: 'text'}
+                ],
+                button: 'Submit'
+              }}
+            />
+          </Tab>
         </Tabs>
+        
       </div>
     )
   }
