@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
+import { formatDate, crnc, formatPrice, fp, ths } from "../utils/utils";
 
 export default class TradeHistory extends Component {
   constructor(props) {
@@ -14,10 +15,10 @@ export default class TradeHistory extends Component {
           <td>{trade.type}</td>
           <td>{trade.symbol}</td>
           <td>{trade.vol}</td>
-          <td>{trade.buyPrice}</td>
-          <td>{trade.sellPrice}</td>
-          <td>{trade.PL * trade.buyPrice * trade.vol}</td>
-          <td>{trade.PL}</td>
+          <td>{formatPrice(trade.buyPrice)}</td>
+          <td>{formatPrice(trade.sellPrice)}</td>
+          <td>{crnc((ths(trade.sellPrice) - ths(trade.buyPrice)) * trade.vol)}</td>
+          <td>{trade.PL.toFixed(1)}</td>
           <td>{trade.date}</td>
         </tr>
       ) : (
@@ -25,7 +26,7 @@ export default class TradeHistory extends Component {
           <td>{trade.type}</td>
           <td>{trade.symbol}</td>
           <td>{trade.vol}</td>
-          <td>{trade.buyPrice}</td>
+          <td>{formatPrice(trade.buyPrice)}</td>
           <td colSpan='3'></td>
           <td>{trade.date}</td>
         </tr>
