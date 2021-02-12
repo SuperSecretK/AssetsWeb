@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
-import { formatPrice } from "../utils/utils";
+import { formatPrice, formatDate } from "../utils/utils";
 
 export default class TransferHistory extends Component {
   constructor(props) {
@@ -9,14 +9,16 @@ export default class TransferHistory extends Component {
   }
 
   showDeposits() {
-    return this.props.depositList.map((deposit, index) => (
-      <tr key={index}>
-        <td>{index}</td>
-        <td>{formatPrice(deposit.amount)}</td>
-        <td>{deposit.desc}</td>
-        <td>{deposit.date.toLocaleString()}</td>
-      </tr>
-    ));
+    return this.props.depositList.map((deposit, index) => {
+      return (
+        <tr key={index}>
+          <td>{index}</td>
+          <td>{formatPrice(deposit.amount)}</td>
+          <td>{deposit.desc}</td>
+          <td>{formatDate(deposit.date)}</td>
+        </tr>
+      );
+    });
   }
 
   showWithdraw() {
@@ -25,7 +27,7 @@ export default class TransferHistory extends Component {
         <td>{index}</td>
         <td>{formatPrice(withdraw.amount)}</td>
         <td>{withdraw.desc}</td>
-        <td>{withdraw.date.toLocaleString()}</td>
+        <td>{formatDate(withdraw.date)}</td>
       </tr>
     ));
   }

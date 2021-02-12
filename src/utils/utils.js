@@ -23,6 +23,6 @@ export function fp() {
   
 }
 
-export function formatDate() {
-  
+export function formatDate(dateString) {
+  return new Date(dateString).toLocaleDateString('pt-PT');
 }
