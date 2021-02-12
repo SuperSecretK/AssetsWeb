@@ -4,8 +4,6 @@ import axios from 'axios';
 import Assets from "./assets";
 import TradeHistory from "./tradeHistory";
 import TransferHistory from "./transferHistory";
-import TradeInput from "./tradeInput";
-import TransferInput from "./transferInput";
 import InputForm from "./Form";
 
 export default class Index extends Component {
