@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
+import { formatDate, crnc, formatPrice, fp, ths } from "../utils/utils";
 
 export default class Assets extends Component {
   constructor(props) {
@@ -11,16 +12,16 @@ export default class Assets extends Component {
     const market = this.props.market;
     return this.props.list.map((asset, index) => {
       const marketPrice = market[`${asset.symbol}`]
-      const pl = ((marketPrice - asset.price) / asset.price) * 100;
+      const pl = (((marketPrice - asset.price) / asset.price) * 100).toFixed(1);
       return (
         <tr key={index}>
           <td>{asset.symbol}</td>
           <td>{asset.vol}</td>
-          <td>{asset.price * 1000}</td>
-          <td>{asset.capital * 1000}</td>
-          <td>{marketPrice * 1000}</td>
-          <td>{marketPrice * asset.vol * 1000}</td>
-          <td>{asset.price * pl * asset.vol * 1000 / 100}</td>  
+          <td>{formatPrice(asset.price)}</td>
+          <td>{formatPrice(asset.capital)}</td>
+          <td>{formatPrice(marketPrice)}</td>
+          <td>{formatPrice(marketPrice * asset.vol)}</td>
+          <td>{crnc(ths(marketPrice * asset.vol) - ths(asset.capital))}</td>  
           <td>{pl}</td>
         </tr>
       );
