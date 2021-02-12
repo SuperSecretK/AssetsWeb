@@ -18,7 +18,8 @@ export default class Index extends Component {
       tradeHistory: [],
       assets: [],
       key: 'assets',
-      marketAssets: {}
+      marketAssets: {},
+      isAdmin: false
     }; 
   }
 
@@ -40,10 +41,26 @@ export default class Index extends Component {
     .catch(err => console.log(err));
   }
 
+  showIsAdmin() {
+    return (
+      <div>
+      <input
+        type="password" 
+        onChange={e => {
+          this.setState({code: e.target.value});
+        }}
+        value={this.state.code}
+      />
+      <button type="button" onClick={() => {
+        if (this.state.code === 'noice') {
+          this.setState({isAdmin: true});
+        }
+      }}>Enter</button>
+      </div>
+    );
+  }
+
   setKey(key) {
-    if (key === 'submit') {
-      
-    }
     this.setState({key: key});
   }
 
@@ -73,43 +90,48 @@ export default class Index extends Component {
             />
           </Tab>
           <Tab eventKey="submit" title="Submit">
-            <InputForm
-              options={{
-                path: 'api/assets',
-                query: '',
-                dropdownQuery: 'buy',
-                time: true,
-                label: false,
-                placeholder: true,
-                inputs: [
-                  {name: 'trade', type: 'dropdown', selections: ['buy', 'sell']},
-                  {name: 'symbol', type: 'text'},
-                  {name: 'price', type: 'number'},
-                  {name: 'vol', type: 'number'},
-                ],
-                button: 'Submit'
-              }}
-            />
+            { this.state.isAdmin ? (
+              <div>
+              <InputForm
+                options={{
+                  path: 'api/assets',
+                  query: '',
+                  dropdownQuery: 'buy',
+                  time: true,
+                  label: false,
+                  placeholder: true,
+                  inputs: [
+                    {name: 'trade', type: 'dropdown', selections: ['buy', 'sell']},
+                    {name: 'symbol', type: 'text'},
+                    {name: 'price', type: 'number'},
+                    {name: 'vol', type: 'number'},
+                  ],
+                  button: 'Submit'
+                }}
+              />
             
-            <InputForm
-              options={{
-                path: 'api/profile',
-                query: '',
-                dropdownQuery: 'deposit',
-                time: true,
-                label: false,
-                placeholder: true,
-                inputs: [
-                  {name: 'transfer', type: 'dropdown', selections: ['deposit', 'withdraw']},
-                  {name: 'amount', type: 'number'},
-                  {name: 'desc', type: 'text'}
-                ],
-                button: 'Submit'
-              }}
-            />
+              <InputForm
+                options={{
+                  path: 'api/profile',
+                  query: '',
+                  dropdownQuery: 'deposit',
+                  time: true,
+                  label: false,
+                  placeholder: true,
+                  inputs: [
+                    {name: 'transfer', type: 'dropdown', selections: ['deposit', 'withdraw']},
+                    {name: 'amount', type: 'number'},
+                    {name: 'desc', type: 'text'}
+                  ],
+                  button: 'Submit'
+                }}
+              />
+            </div>
+            ) : (
+              this.showIsAdmin()
+            )}
           </Tab>
         </Tabs>
-        
       </div>
     )
   }
