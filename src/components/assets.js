@@ -8,18 +8,24 @@ export default class Assets extends Component {
   }
 
   showAssets() {
-    return this.props.list.map((asset, index) => (
-      <tr key={index}>
-        <td>{asset.symbol}</td>
-        <td>{asset.vol}</td>
-        <td>{asset.price}</td>
-        <td>{asset.capital}</td>
-        <td>{}</td>
-        <td>{}</td>
-        <td>{}</td>
-        <td>{}</td>
-      </tr>
-    ));
+    const market = this.props.market;
+    console.log(market);
+    return this.props.list.map((asset, index) => {
+      const marketPrice = market[`${asset.symbol}`]
+      const pl = ((marketPrice - asset.price) / asset.price) * 100;
+      return (
+        <tr key={index}>
+          <td>{asset.symbol}</td>
+          <td>{asset.vol}</td>
+          <td>{asset.price * 1000}</td>
+          <td>{asset.capital * 1000}</td>
+          <td>{marketPrice * 1000}</td>
+          <td>{marketPrice * asset.vol * 1000}</td>
+          <td>{asset.price * pl * asset.vol * 1000 / 100}</td>  
+          <td>{pl}</td>
+        </tr>
+      );
+    });
   }
 
   render() {

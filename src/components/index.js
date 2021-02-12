@@ -16,24 +16,25 @@ export default class Index extends Component {
       netEarned: 0,
       tradeHistory: [],
       assets: [],
-      key: 'assets'
-    };
+      key: 'assets',
+      marketAssets: {}
+    }; 
   }
 
   componentDidMount() {
     axios.get('/api/profile')
     .then(profile => {
       const { depositHistory, withdrawHistory, idle, assetsCapital, netEarned, tradeHistory, assets } = profile.data.profile;
-      console.log(profile.data.profile);
-      this.setState(state => ({
+      this.setState({
         depositHistory: [...depositHistory],
         withdrawHistory: [...withdrawHistory],
         idle: idle,
         assetsCapital: assetsCapital,
         netEarned: netEarned,
         tradeHistory: [...tradeHistory],
-        assets: [...assets]
-      }));
+        assets: [...assets],
+        marketAssets: profile.data.market
+      });
     })
     .catch(err => console.log(err));
   }
@@ -53,6 +54,7 @@ export default class Index extends Component {
           <Tab eventKey="assets" title="Assets">
             <Assets
               list={this.state.assets}
+              market={this.state.marketAssets}
             />
           </Tab>
           <Tab eventKey="trades" title="Trades">
