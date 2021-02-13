@@ -5,6 +5,7 @@ import Assets from "./assets";
 import TradeHistory from "./tradeHistory";
 import TransferHistory from "./transferHistory";
 import InputForm from "./Form";
+import Stats from "./stats";
 
 export default class Index extends Component {
   constructor(props) {
@@ -67,6 +68,12 @@ export default class Index extends Component {
   render() {
     return (
       <div>
+        <Stats
+          idle={this.state.idle}
+          list={this.state.assets}
+          market={this.state.marketAssets}
+        />
+        <br />
         <Tabs
           id="controlled-tab-example"
           activeKey={this.key}
