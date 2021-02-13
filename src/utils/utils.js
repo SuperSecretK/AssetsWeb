@@ -12,8 +12,8 @@ export function ths(number) {
   return number * 1000;
 }
 
-export function formatPrice(number) {
-  return (number * 1000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export function formatPrice(number, thousand=true) {
+  return (thousand ? number * 1000 : number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 /**

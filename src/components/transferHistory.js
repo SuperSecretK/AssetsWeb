@@ -13,7 +13,7 @@ export default class TransferHistory extends Component {
       return (
         <tr key={index}>
           <td>{index}</td>
-          <td>{formatPrice(deposit.amount)}</td>
+          <td>{formatPrice(deposit.amount, false)}</td>
           <td>{deposit.desc}</td>
           <td>{formatDate(deposit.date)}</td>
         </tr>
@@ -25,7 +25,7 @@ export default class TransferHistory extends Component {
     return this.props.withdrawList.map((withdraw, index) => (
       <tr key={index}>
         <td>{index}</td>
-        <td>{formatPrice(withdraw.amount)}</td>
+        <td>{formatPrice(withdraw.amount, false)}</td>
         <td>{withdraw.desc}</td>
         <td>{formatDate(withdraw.date)}</td>
       </tr>
