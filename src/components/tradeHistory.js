@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
 import { formatDate, crnc, formatPrice, ths } from "../utils/utils";
+import { track } from "../utils/style";
 
 export default class TradeHistory extends Component {
   constructor(props) {
@@ -9,16 +10,17 @@ export default class TradeHistory extends Component {
   }
 
   showTrades() {
-    return this.props.list.map((trade, index) => (
-      trade.type === 'SELL' ? (
+    return this.props.list.map((trade, index) => {
+      const plv = (ths(trade.sellPrice) - ths(trade.buyPrice)) * trade.vol;
+      return trade.type === 'SELL' ? (
         <tr key={index}>
           <td>{trade.type}</td>
           <td>{trade.symbol}</td>
           <td>{trade.vol}</td>
           <td>{formatPrice(trade.buyPrice)}</td>
           <td>{formatPrice(trade.sellPrice)}</td>
-          <td>{crnc((ths(trade.sellPrice) - ths(trade.buyPrice)) * trade.vol)}</td>
-          <td>{trade.PL.toFixed(1)}</td>
+          <td style={track(plv)}>{crnc(plv)}</td>
+          <td style={track(trade.PL)}>{trade.PL.toFixed(1)}</td>
           <td>{formatDate(trade.date)}</td>
         </tr>
       ) : (
@@ -31,7 +33,7 @@ export default class TradeHistory extends Component {
           <td>{formatDate(trade.date)}</td>
         </tr>
       )
-    ));
+    });
   }
 
   render() {
