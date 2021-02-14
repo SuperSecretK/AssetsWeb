@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
-import { formatDate, crnc, formatPrice, fp, ths } from "../utils/utils";
+import { crnc, formatPrice, ths } from "../utils/utils";
 import { track } from "../utils/style";
 
 export default class Assets extends Component {

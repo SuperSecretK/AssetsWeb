@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
-import { formatPrice, formatDate, crnc, ths } from "../utils/utils";
+import { formatPrice } from "../utils/utils";
 
 export default class Stats extends Component {
   assetsValue(list, market) {
