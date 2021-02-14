@@ -92,6 +92,7 @@ export default class Index extends Component {
             <Assets
               list={this.state.assets}
               market={this.state.marketAssets}
+              cap={this.state.assetsCapital}
               str={this.state.strings}
             />
           </Tab>

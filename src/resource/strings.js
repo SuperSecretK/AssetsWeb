@@ -10,10 +10,10 @@ export default class Strings {
       transfer: ['Transfer', 'Lịch sử chuyển tiền'],
       symbol: ['Symbol', 'Mã'],
       volume: ['Volume', 'Khối lượng'],
-      cap: ['Capital single', 'Vốn'],
-      capAvg: ['Captical avg', 'Vốn trung bình'],
-      market: ['Market single', 'Giá thị trường'],
-      marketAvg: ['Market avg', 'Giá trung bình'],
+      avgCap: ['Avg capital', 'Giá vốn trung bình'],
+      totalCap: ['Total captical', 'Tổng giá vốn'],
+      market: ['Market', 'Giá thị trường'],
+      assetsVal: ['Assets value', 'Thành tiền'],
       plv: ['Profit/Loss', 'Lời/Lỗ'],
       pl: ['Profit/Loss %', 'Lời/Lỗ %'],
       type: ['Type', 'Giao dịch'],
@@ -26,6 +26,9 @@ export default class Strings {
       desc: ['Description', 'Miêu tả'],
       deposit: ['Deposit', 'Nạp tiền'],
       withdraw: ['Withdraw', 'Rút tiền'],
+      about: ['About', 'Chi tiết'],
+      chart: ['Chart', 'Biểu đồ giá'],
+      total: ['Total', 'Tổng cộng']
     };
   }
 
