@@ -2,7 +2,7 @@ export default class Strings {
   constructor(lang) {
     this.lang = lang === 'en' ? 0 : 1;
     this.strings = {
-      settings: ['Settings', 'Cài đặt'],
+      logout: ['Logout', 'Đăng xuất'],
       accTotal: ['Account total', 'Giá trị tài khoản'],
       idle: ['Idle', 'Số dư tiền'],
       assets: ['Assets', 'Tài sản'],

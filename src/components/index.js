@@ -74,7 +74,7 @@ export default class Index extends Component {
     const $s = this.state.strings;
     return (
       <div>
-        <Settings />
+        <Settings str={this.state.strings}/>
         <br />
         <Stats
           idle={this.state.idle}
