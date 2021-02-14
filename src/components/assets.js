@@ -4,11 +4,6 @@ import { formatDate, crnc, formatPrice, fp, ths } from "../utils/utils";
 import { track } from "../utils/style";
 
 export default class Assets extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   showAssets() {
     const market = this.props.market;
     return this.props.list.map((asset, index) => {
@@ -31,19 +26,20 @@ export default class Assets extends Component {
   }
 
   render() {
+    const $s = this.props.str
     return (
       <div>
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Symbol</th>
-              <th>Volume</th>
-              <th>Capital single</th>
-              <th>Captical avg</th>
-              <th>Market single</th>
-              <th>Market avg</th>
-              <th>Profit/Loss</th>
-              <th>Profit/Loss %</th>
+              <th>{$s.str('symbol')}</th>
+              <th>{$s.str('volume')}</th>
+              <th>{$s.str('cap')}</th>
+              <th>{$s.str('capAvg')}</th>
+              <th>{$s.str('market')}</th>
+              <th>{$s.str('marketAvg')}</th>
+              <th>{$s.str('plv')}</th>
+              <th>{$s.str('pl')}</th>
             </tr>
           </thead>
           <tbody>

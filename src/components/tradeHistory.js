@@ -9,12 +9,12 @@ export default class TradeHistory extends Component {
     this.state = {};
   }
 
-  showTrades() {
+  showTrades($s) {
     return this.props.list.map((trade, index) => {
       const plv = (ths(trade.sellPrice) - ths(trade.buyPrice)) * trade.vol;
       return trade.type === 'SELL' ? (
         <tr key={index}>
-          <td>{trade.type}</td>
+          <td>{$s.str("sell")}</td>
           <td>{trade.symbol}</td>
           <td>{trade.vol}</td>
           <td>{formatPrice(trade.buyPrice)}</td>
@@ -25,7 +25,7 @@ export default class TradeHistory extends Component {
         </tr>
       ) : (
         <tr key={index}>
-          <td>{trade.type}</td>
+          <td>{$s.str("buy")}</td>
           <td>{trade.symbol}</td>
           <td>{trade.vol}</td>
           <td>{formatPrice(trade.buyPrice)}</td>
@@ -37,23 +37,24 @@ export default class TradeHistory extends Component {
   }
 
   render() {
+    const $s = this.props.str;
     return (
       <div>
         <Table bordered hover>
         <thead>
           <tr>
-            <th>Type</th>
-            <th>Symbol</th>
-            <th>Volume</th>
-            <th>Buy price</th>
-            <th>Sell price</th>
-            <th>Profit/Loss</th>
-            <th>Profit/Loss %</th>
-            <th>Date</th>
+            <th>{$s.str("type")}</th>
+            <th>{$s.str("symbol")}</th>
+            <th>{$s.str("volume")}</th>
+            <th>{$s.str("buyPrice")}</th>
+            <th>{$s.str("sellPrice")}</th>
+            <th>{$s.str("plv")}</th>
+            <th>{$s.str("pl")}</th>
+            <th>{$s.str("date")}</th>
           </tr>
         </thead>
         <tbody>
-        {this.showTrades()}
+        {this.showTrades($s)}
         </tbody>
       </Table>
       </div>

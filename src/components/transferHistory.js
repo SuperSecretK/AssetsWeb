@@ -33,19 +33,20 @@ export default class TransferHistory extends Component {
   }
 
   render() {
+    const $s = this.props.str;
     return (
       <div className="row">
         <div className="col-6">
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Deposit</th>
+              <th>{$s.str("deposit")}</th>
             </tr>
             <tr>
               <th>#</th>
-              <th>Amount</th>
-              <th>Description</th>
-              <th>Date</th>
+              <th>{$s.str("amount")}</th>
+              <th>{$s.str("desc")}</th>
+              <th>{$s.str("date")}</th>
             </tr>
           </thead>
           <tbody>
@@ -57,13 +58,13 @@ export default class TransferHistory extends Component {
         <Table striped bordered hover>
           <thead>
             <tr>
-              <th>Withdraw</th>
+              <th>{$s.str("withdraw")}</th>
             </tr>
             <tr>
               <th>#</th>
-              <th>Amount</th>
-              <th>Description</th>
-              <th>Date</th>
+              <th>{$s.str("amount")}</th>
+              <th>{$s.str("desc")}</th>
+              <th>{$s.str("date")}</th>
             </tr>
           </thead>
           <tbody>

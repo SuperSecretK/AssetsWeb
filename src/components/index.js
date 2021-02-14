@@ -6,6 +6,7 @@ import TradeHistory from "./tradeHistory";
 import TransferHistory from "./transferHistory";
 import InputForm from "./Form";
 import Stats from "./stats";
+import Strings from "../resource/strings";
 
 export default class Index extends Component {
   constructor(props) {
@@ -20,7 +21,8 @@ export default class Index extends Component {
       assets: [],
       key: 'assets',
       marketAssets: {},
-      isAdmin: false
+      isAdmin: false,
+      strings: new Strings('vn')
     }; 
   }
 
@@ -66,6 +68,7 @@ export default class Index extends Component {
   }
 
   render() {
+    const $s = this.state.strings;
     return (
       <div>
         <Stats
@@ -79,21 +82,24 @@ export default class Index extends Component {
           activeKey={this.key}
           onSelect={k => this.setKey(k)}
         >
-          <Tab eventKey="assets" title="Assets">
+          <Tab eventKey="assets" title={$s.str("assets")}>
             <Assets
               list={this.state.assets}
               market={this.state.marketAssets}
+              str={this.state.strings}
             />
           </Tab>
-          <Tab eventKey="trades" title="Trades">
+          <Tab eventKey="trades" title={$s.str("trades")}>
             <TradeHistory
               list={this.state.tradeHistory}
+              str={this.state.strings}
             />
           </Tab>
-          <Tab eventKey="transfer" title="Transfer">
+          <Tab eventKey="transfer" title={$s.str("transfer")}>
             <TransferHistory
               depositList={this.state.depositHistory}
               withdrawList={this.state.withdrawHistory}
+              str={this.state.strings}
             />
           </Tab>
           <Tab eventKey="submit" title="Submit">
