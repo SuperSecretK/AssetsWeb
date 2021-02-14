@@ -2,32 +2,34 @@ export default class Strings {
   constructor(lang) {
     this.lang = lang === 'en' ? 0 : 1;
     this.strings = {
-      assets: ['Assets', 'Tai san'],
-      trades: ['Trades', 'Lich su giao dich'],
-      transfer: ['Transfer', 'Lich su chuyen tien'],
-      symbol: ['Symbol', 'Ma'],
-      volume: ['Volume', 'Khoi luong'],
-      cap: ['Capital single', 'Von'],
-      capAvg: ['Captical avg', 'Von trung binh'],
-      market: ['Market single', 'Gia thi truong'],
-      marketAvg: ['Market avg', 'Gia trung binh'],
-      plv: ['Profit/Loss', 'Loi/Lo'],
-      pl: ['Profit/Loss %', 'Loi/Lo %'],
-      type: ['Type', 'Giao dich'],
-      buyPrice: ['Buy price', 'Gia mua'],
-      sellPrice: ['Sell price', 'Gia ban'],
-      date: ['Date', 'Ngay'],
+      settings: ['Settings', 'Cài đặt'],
+      accTotal: ['Account total', 'Giá trị tài khoản'],
+      idle: ['Idle', 'Số dư tiền'],
+      assets: ['Assets', 'Tài sản'],
+      trades: ['Trades', 'Lịch sử giao dịch'],
+      transfer: ['Transfer', 'Lịch sử chuyển tiền'],
+      symbol: ['Symbol', 'Mã'],
+      volume: ['Volume', 'Khối lượng'],
+      cap: ['Capital single', 'Vốn'],
+      capAvg: ['Captical avg', 'Vốn trung bình'],
+      market: ['Market single', 'Giá thị trường'],
+      marketAvg: ['Market avg', 'Giá trung bình'],
+      plv: ['Profit/Loss', 'Lời/Lỗ'],
+      pl: ['Profit/Loss %', 'Lời/Lỗ %'],
+      type: ['Type', 'Giao dịch'],
+      buyPrice: ['Buy price', 'Giá mua'],
+      sellPrice: ['Sell price', 'Giá bán'],
+      date: ['Date', 'Ngày'],
       buy: ['Buy', 'Mua'],
-      sell: ['Sell', 'Ban'],
-      amount: ['Amount', 'Gia tri'],
-      desc: ['Description', 'Mieu ta'],
-      deposit: ['Deposit', 'Nap tien'],
-      withdraw: ['Withdraw', 'Rut tien'],
+      sell: ['Sell', 'Bán'],
+      amount: ['Amount', 'Giá trị'],
+      desc: ['Description', 'Miêu tả'],
+      deposit: ['Deposit', 'Nạp tiền'],
+      withdraw: ['Withdraw', 'Rút tiền'],
     };
   }
 
   str(string) {
-    console.log(this.strings);
     return this.strings[string][this.lang];
   }
 }

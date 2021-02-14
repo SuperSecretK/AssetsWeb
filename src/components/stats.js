@@ -12,17 +12,18 @@ export default class Stats extends Component {
   }
 
   render() {
+    const $s = this.props.str;
     const idle = this.props.idle;
     return (
       <div>
         <Table bordered>
           <tbody>
             <tr>
-              <th>Account total</th>
+              <th>{$s.str("accTotal")}</th>
               <td>{formatPrice(idle + this.assetsValue(this.props.list, this.props.market))}</td>
             </tr>
             <tr>
-              <th>Idle</th>
+              <th>{$s.str("idle")}</th>
               <td>{formatPrice(idle)}</td>
             </tr>
           </tbody>
