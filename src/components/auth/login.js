@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Form, Card } from "react-bootstrap";
 import axios from 'axios';
+import { setCookie } from "../../utils/cookies";
 
 class Login extends Component {
   constructor(props) {
@@ -21,17 +22,22 @@ class Login extends Component {
   }
 
   onChangePassword = e => {
-    this.setState({
-      password: e.target.value
-    });
+    let obj = {};
+    obj[e.target.name] = e.target.value; 
+    this.setState(obj);
+  }
+
+  onChangeCheckbox = e => {
+    if (e.target.checked) {
+      setCookie('lang', 'en');
+    } else {
+      setCookie('lang', 'vn');
+    }
   }
 
   onSubmit = e => {
     e.preventDefault();
-    axios.post('/login', {
-      username: this.state.username,
-      password: this.state.password
-    }, {headers: this.headers})
+    axios.post('/login', this.state, {headers: this.headers})
     .then(res => {
       if (res.status === 200) {
         this.props.history.push('/profile');
@@ -42,11 +48,12 @@ class Login extends Component {
     })
     .catch(err => {
       console.error(err);
-      alert('Access denied');
+      alert('Wrong username/password');
     });
   }
 
   componentDidMount() {
+    setCookie('lang', 'vn');
     axios.get('/login')
     .then(res => {
       this.setState({msg: res.data.text});
@@ -61,12 +68,15 @@ class Login extends Component {
           <Card.Body>
             <Form onSubmit={this.onSubmit}>
             <Form.Group>
+              <Form.Check type="checkbox" label="Manager" onChange={this.onChangeCheckbox}/>
+            </Form.Group>
+            <Form.Group>
               <Form.Label>Username</Form.Label>
               <Form.Control type="text" onChange={this.onChangeUsername} value={this.state.username}/>
             </Form.Group>
             <Form.Group>
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" onChange={this.onChangePassword} value={this.state.password}/>
+              <Form.Control type="password" name="password" onChange={this.onChangePassword} value={this.state.password}/>
             </Form.Group>
             <Button className="login-btn" block style={{backgroundColor: "#f36523"}} type="submit" id="button">
               Enter

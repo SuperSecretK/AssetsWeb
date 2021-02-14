@@ -6,7 +6,9 @@ import TradeHistory from "./tradeHistory";
 import TransferHistory from "./transferHistory";
 import InputForm from "./Form";
 import Stats from "./stats";
+import Settings from "./settings";
 import Strings from "../resource/strings";
+import { getCookie } from "../utils/cookies";
 
 export default class Index extends Component {
   constructor(props) {
@@ -22,9 +24,10 @@ export default class Index extends Component {
       key: 'assets',
       marketAssets: {},
       isAdmin: false,
-      strings: new Strings('vn')
-    }; 
+      strings: new Strings(getCookie('lang'))
+    };
   }
+
 
   componentDidMount() {
     axios.get('/api/profile')
@@ -71,10 +74,13 @@ export default class Index extends Component {
     const $s = this.state.strings;
     return (
       <div>
+        <Settings />
+        <br />
         <Stats
           idle={this.state.idle}
           list={this.state.assets}
           market={this.state.marketAssets}
+          str={this.state.strings}
         />
         <br />
         <Tabs
