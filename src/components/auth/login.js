@@ -37,7 +37,7 @@ class Login extends Component {
 
   onSubmit = e => {
     e.preventDefault();
-    axios.post('/login', this.state, {headers: this.headers})
+    axios.post('https://assetx.herokuapp.com/login', this.state, {headers: this.headers})
     .then(res => {
       if (res.status === 200) {
         this.props.history.push('/profile');
@@ -54,7 +54,7 @@ class Login extends Component {
 
   componentDidMount() {
     setCookie('lang', 'vn');
-    axios.get('/login')
+    axios.get('https://assetx.herokuapp.com/login')
     .then(res => {
       this.setState({msg: res.data.text});
     })
