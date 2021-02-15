@@ -117,7 +117,7 @@ export default class Index extends Component {
               <div>
               <InputForm
                 options={{
-                  path: 'api/assets',
+                  path: 'https://assetx.herokuapp.com/api/assets',
                   query: '',
                   dropdownQuery: 'buy',
                   time: true,
@@ -135,7 +135,7 @@ export default class Index extends Component {
             
               <InputForm
                 options={{
-                  path: 'api/profile',
+                  path: 'https://assetx.herokuapp.com/api/profile',
                   query: '',
                   dropdownQuery: 'deposit',
                   time: true,
