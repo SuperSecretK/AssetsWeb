@@ -89,7 +89,7 @@ export default class Index extends Component {
           id="controlled-tab-example"
           activeKey={this.key}
           onSelect={k => this.setKey(k)}
-        >
+          >
           <Tab eventKey="assets" title={$s.str("assets")}>
             <Assets
               list={this.state.assets}
