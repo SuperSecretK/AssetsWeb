@@ -11,7 +11,6 @@ class Login extends Component {
       password: ""
     };
     this.headers = {
-      'Cookie': 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDJhNjVlMDMxMmFiYjI1NzA2YmU3NGUiLCJpYXQiOjE2MTM0MTE2NzksImV4cCI6MTYxMzQxNTI3OX0.NJjJ9iHutuXLcOucQLaK0QRFRJwulW-wOddPWPT0fWE',
       'Content-Type': 'application/json'
     };
   }
@@ -55,6 +54,7 @@ class Login extends Component {
 
   componentDidMount() {
     setCookie('lang', 'vn');
+    setCookie('token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDJhNjVlMDMxMmFiYjI1NzA2YmU3NGUiLCJpYXQiOjE2MTM0MTE2NzksImV4cCI6MTYxMzQxNTI3OX0.NJjJ9iHutuXLcOucQLaK0QRFRJwulW-wOddPWPT0fWE');
     axios.get('https://assetx.herokuapp.com/login')
     .then(res => {
       this.setState({msg: res.data.text});
