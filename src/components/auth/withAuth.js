@@ -10,10 +10,13 @@ export default function withAuth(ComponentToProtect) {
         loading: true,
         redirect: false,
       };
+      this.headers = {
+        'Content-Type': 'application/json'
+      };
     }
 
     componentDidMount() {
-      axios.get('https://assetx.herokuapp.com/checkToken')
+      axios.get('https://assetx.herokuapp.com/checkToken', {headers: this.headers})
         .then(res => {
           if (res.status === 200) {
             this.setState({ loading: false });
