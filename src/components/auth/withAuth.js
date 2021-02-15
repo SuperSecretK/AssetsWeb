@@ -11,7 +11,7 @@ export default function withAuth(ComponentToProtect) {
         redirect: false,
       };
       this.headers = {
-        'Content-Type': 'application/json'
+        'Cookie': 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDJhNjVlMDMxMmFiYjI1NzA2YmU3NGUiLCJpYXQiOjE2MTM0MTE2NzksImV4cCI6MTYxMzQxNTI3OX0.NJjJ9iHutuXLcOucQLaK0QRFRJwulW-wOddPWPT0fWE'
       };
     }
 
