@@ -21,9 +21,7 @@ export default class Assets extends Component {
   showAssets() {
     const market = this.props.market;
     return this.props.list.map((asset, index) => {
-      const marketPrice = market[`${asset.symbol}`]
-      const pl = (((marketPrice - asset.price) / asset.price) * 100).toFixed(1);
-      const plv = ths(marketPrice * asset.vol) - ths(asset.capital);
+      const marketPrice = market.market[asset.symbol];
       return (
         <tr key={index}>
           <td className="asset" id={asset.symbol} style={{maxWidth: "65px"}}>{asset.symbol}{this.renderAssetOption(asset.symbol)}</td>
@@ -31,9 +29,9 @@ export default class Assets extends Component {
           <td>{formatPrice(asset.price)}</td>
           <td>{formatPrice(asset.capital)}</td>
           <td>{formatPrice(marketPrice)}</td>
-          <td>{formatPrice(marketPrice * asset.vol)}</td>
-          <td style={track(plv)}>{crnc(plv)}</td>  
-          <td style={track(pl)}>{pl}</td>
+          <td>{formatPrice(market.val[asset.symbol])}</td>
+          <td style={track(market.pl[asset.symbol])}>{formatPrice(market.plv[asset.symbol])}</td>  
+          <td style={track(market.pl[asset.symbol])}>{market.pl[asset.symbol]}</td>
         </tr>
       );
     });
@@ -57,7 +55,6 @@ export default class Assets extends Component {
 
   render() {
     const $s = this.props.str
-    console.log(this.props.cap);
     return (
       <div>
       <Table striped bordered hover>
@@ -79,9 +76,9 @@ export default class Assets extends Component {
             <th colSpan="3">{$s.str('total')}</th>
             <th>{formatPrice(this.props.cap)}</th>
             <th></th>
-            <th>{}</th>
-            <th>{$s.str('plv')}</th>
-            <th>{$s.str('pl')}</th>
+            <th>{formatPrice(this.props.market.totalVal)}</th>
+            <th style={track(this.props.market.totalPlv)}>{formatPrice(this.props.market.totalPlv)}</th>
+            <th style={track(this.props.market.totalPl)}>{this.props.market.totalPl}</th>
           </tr>
         </tbody>
       </Table>
