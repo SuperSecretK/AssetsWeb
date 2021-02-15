@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table } from "react-bootstrap";
-import { formatDate, crnc, formatPrice, ths } from "../utils/utils";
+import { formatDate, formatPrice } from "../utils/utils";
 import { track } from "../utils/style";
 
 export default class TradeHistory extends Component {
