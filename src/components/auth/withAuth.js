@@ -10,13 +10,20 @@ export default function withAuth(ComponentToProtect) {
         loading: true,
         redirect: false,
       };
-      this.headers = {
-        'Cookie': 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDJhNjVlMDMxMmFiYjI1NzA2YmU3NGUiLCJpYXQiOjE2MTM0MTE2NzksImV4cCI6MTYxMzQxNTI3OX0.NJjJ9iHutuXLcOucQLaK0QRFRJwulW-wOddPWPT0fWE'
-      };
     }
 
     componentDidMount() {
-      axios.get('https://assetx.herokuapp.com/checkToken', {headers: this.headers})
+      const axiosConfig = {
+        headers: {
+        'content-Type': 'application/json',
+        "Accept": "/",
+        "Cache-Control": "no-cache",
+        "Cookie": 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDJhNjVlMDMxMmFiYjI1NzA2YmU3NGUiLCJpYXQiOjE2MTM0MTE2NzksImV4cCI6MTYxMzQxNTI3OX0.NJjJ9iHutuXLcOucQLaK0QRFRJwulW-wOddPWPT0fWE'
+        },
+        credentials: "same-origin"
+        };
+      axios.defaults.withCredentials = true;
+      axios.get('https://assetx.herokuapp.com/checkToken', axiosConfig)
         .then(res => {
           if (res.status === 200) {
             this.setState({ loading: false });
