@@ -24,7 +24,8 @@ export default class Index extends Component {
       key: 'assets',
       marketAssets: {},
       isAdmin: false,
-      strings: new Strings(getCookie('lang'))
+      strings: new Strings(getCookie('lang')),
+      tradeNlss: {}
     };
   }
 
@@ -41,7 +42,8 @@ export default class Index extends Component {
         netEarned: netEarned,
         tradeHistory: [...tradeHistory],
         assets: [...assets],
-        marketAssets: profile.data.market
+        marketAssets: profile.data.market,
+        tradeNlss: profile.data.tradeNlss
       });
     })
     .catch(err => console.log(err));
@@ -99,6 +101,7 @@ export default class Index extends Component {
           <Tab eventKey="trades" title={$s.str("trades")}>
             <TradeHistory
               list={this.state.tradeHistory}
+              nlss={this.state.tradeNlss}
               str={this.state.strings}
             />
           </Tab>

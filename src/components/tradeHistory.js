@@ -11,7 +11,6 @@ export default class TradeHistory extends Component {
 
   showTrades($s) {
     return this.props.list.map((trade, index) => {
-      const plv = (ths(trade.sellPrice) - ths(trade.buyPrice)) * trade.vol;
       return trade.type === 'SELL' ? (
         <tr key={index}>
           <td>{$s.str("sell")}</td>
@@ -19,7 +18,7 @@ export default class TradeHistory extends Component {
           <td>{trade.vol}</td>
           <td>{formatPrice(trade.buyPrice)}</td>
           <td>{formatPrice(trade.sellPrice)}</td>
-          <td style={track(plv)}>{crnc(plv)}</td>
+          <td style={track(trade.PLV)}>{formatPrice(trade.PLV)}</td>
           <td style={track(trade.PL)}>{trade.PL.toFixed(1)}</td>
           <td>{formatDate(trade.date)}</td>
         </tr>
@@ -55,6 +54,10 @@ export default class TradeHistory extends Component {
         </thead>
         <tbody>
         {this.showTrades($s)}
+        <th colSpan='5'>{$s.str("total")}</th>
+        <th style={track(this.props.nlss.totalPlv)}>{formatPrice(this.props.nlss.totalPlv)}</th>
+        <th style={track(this.props.nlss.totalPl)}>{this.props.nlss.totalPl}</th>
+        <th></th>
         </tbody>
       </Table>
       </div>
