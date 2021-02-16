@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Button, Form, Col } from "react-bootstrap";
+import { getCookie } from "../utils/cookies";
 
 export default class InputForm extends Component {
   /**
@@ -68,7 +69,11 @@ export default class InputForm extends Component {
       path = `${opt.path}/${opt.query}`;
     }
     console.log(path);
-    axios.put(path, this.state)
+    axios.put(path, this.state, {
+      headers: {
+        'x-access-token': getCookie('token')
+      }
+    })
     .then(res => console.log(res.data))
     .catch(err => console.log(err));
   }

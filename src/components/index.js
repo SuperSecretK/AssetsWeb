@@ -31,7 +31,11 @@ export default class Index extends Component {
 
 
   componentDidMount() {
-    axios.get('https://assetx.herokuapp.com/api/profile')
+    axios.get('https://assetx.herokuapp.com/api/profile', {
+      headers: {
+        'x-access-token': getCookie('token')
+      }
+    })
     .then(profile => {
       const { depositHistory, withdrawHistory, idle, assetsCapital, netEarned, tradeHistory, assets } = profile.data.profile;
       this.setState({
