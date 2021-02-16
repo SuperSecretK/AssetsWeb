@@ -74,7 +74,10 @@ export default class InputForm extends Component {
         'x-access-token': getCookie('token')
       }
     })
-    .then(res => console.log(res.data))
+    .then(res => {
+      console.log(res.data);
+      window.location.reload();
+    })
     .catch(err => console.log(err));
   }
 
