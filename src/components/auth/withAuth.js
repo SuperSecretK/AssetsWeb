@@ -27,11 +27,13 @@ export default function withAuth(ComponentToProtect) {
           if (res.status === 200) {
             this.setState({ loading: false });
           } else {
+            console.log(res);
             const error = new Error(res.error);
             throw error;
           }
         })
         .catch(err => {
+          console.log(err);
           console.error(err);
           this.setState({ loading: false, redirect: true });
         });
