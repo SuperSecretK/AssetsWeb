@@ -79,7 +79,7 @@ export default class InputForm extends Component {
   }
 
   onSubmit = e => {
-    // e.preventDefault();
+    e.preventDefault();
     if (this.props.options.time) {
       this.setState({
         date: new Date()
