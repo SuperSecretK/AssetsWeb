@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { getCookie } from '../../utils/cookies';
 
 export default function withAuth(ComponentToProtect) {
   return class extends Component {
@@ -13,16 +14,11 @@ export default function withAuth(ComponentToProtect) {
     }
 
     componentDidMount() {
-      // const axiosConfig = {
-      //   headers: {
-      //   'content-Type': 'application/json',
-      //   "Accept": "*/*",
-      //   "Cache-Control": "no-cache",
-      //   "Cookie": 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDJhNjVlMDMxMmFiYjI1NzA2YmU3NGUiLCJpYXQiOjE2MTM0MTE2NzksImV4cCI6MTYxMzQxNTI3OX0.NJjJ9iHutuXLcOucQLaK0QRFRJwulW-wOddPWPT0fWE'
-      //   },
-      //   withCredentials: true
-      //   };
-      axios.get('https://assetx.herokuapp.com/checkToken')
+      axios.get('https://assetx.herokuapp.com/checkToken', {
+        headers: {
+          'Cookie': getCookie('token')
+        }
+      })
         .then(res => {
           if (res.status === 200) {
             this.setState({ loading: false });
