@@ -14,7 +14,7 @@ export default function withAuth(ComponentToProtect) {
     }
 
     componentDidMount() {
-      axios.get('/checkToken', {
+      axios.get('https://assetx.herokuapp.com/checkToken', {
         headers: {
           'x-access-token': getCookie('token')
         }
