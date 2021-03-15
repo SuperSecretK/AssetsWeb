@@ -85,7 +85,17 @@ class Login extends Component {
             </Button>
             </Form>
           </Card.Body>
-        </Card>   
+        </Card>
+
+        <Card style={{ width: '25rem', margin: "auto", marginTop: "5%", marginBottom: "5px" }}>
+          <Card.Header>
+            DEMO
+          </Card.Header>
+          <Card.Body>
+            <div>Username: demo</div>
+            <div>Password: demo</div>
+          </Card.Body>
+        </Card>
       </div>   
     )
   }
