@@ -117,7 +117,7 @@ export default class Index extends Component {
             />
           </Tab>
           <Tab eventKey="submit" title="Submit">
-            { this.state.isAdmin ? (
+            {/* { this.state.isAdmin ? ( */}
               <div>
               <InputForm
                 options={{
@@ -154,9 +154,9 @@ export default class Index extends Component {
                 }}
               />
             </div>
-            ) : (
+            {/* ) : (
               this.showIsAdmin()
-            )}
+            )} */}
           </Tab>
         </Tabs>
       </div>
