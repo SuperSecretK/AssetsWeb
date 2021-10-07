@@ -4,3 +4,5 @@
 - `client/public`: add `_redirects` file content: `/* /index.html 200`
 - `server: /auth/login.js` `post('/login')`: `res.cookie('token', token).sendStatus(200);` to `res.status(200).json('token': token);` Cannot set cookie of Client browser from Server
 - `client: withAuth routes`: axios request must have header/body to deliver cookie token to `Back-end`
+
+test
