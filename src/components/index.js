@@ -31,7 +31,7 @@ export default class Index extends Component {
 
 
   componentDidMount() {
-    axios.get('https://assetx.herokuapp.com/api/profile', {
+    axios.get('http://localhost:4000/api/profile', {
       headers: {
         'x-access-token': getCookie('token')
       }
@@ -121,7 +121,7 @@ export default class Index extends Component {
               <div>
               <InputForm
                 options={{
-                  path: 'https://assetx.herokuapp.com/api/assets',
+                  path: 'http://localhost:4000/api/assets',
                   query: '',
                   dropdownQuery: 'buy',
                   time: true,
@@ -139,7 +139,7 @@ export default class Index extends Component {
             
               <InputForm
                 options={{
-                  path: 'https://assetx.herokuapp.com/api/profile',
+                  path: 'http://localhost:4000/api/profile',
                   query: '',
                   dropdownQuery: 'deposit',
                   time: true,
